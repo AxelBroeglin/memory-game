@@ -50,6 +50,24 @@ const cardArray = [
     }
   ]
 
-//
+
 //Trick to sort an array randomly
-//cardArray.sort(() => 0.5 - Math.random())
+cardArray.sort(() => 0.5 - Math.random())
+
+//Selecte Grid with its #id
+const gridDisplay = document.querySelector('#grid')
+
+//Function to create the board
+function createBoard () {
+  //For loop i=0, as long as i<10, add +1 at each loop
+  for (let i = 0; i < 10; i++){
+    //Declaration of the variable Card
+    const card = document.createElement('img')
+    
+    card.setAttribute('src', 'images/blank.png')
+    card.setAttribute('data-id', i)
+    console.log(card, i)
+  }
+}
+
+createBoard()
