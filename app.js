@@ -54,10 +54,15 @@ const cardArray = [
 //Trick to sort an array randomly
 cardArray.sort(() => 0.5 - Math.random())
 
-//Selecte Grid with its #id
+//Selects Grid with its #id
 const gridDisplay = document.querySelector('#grid')
+//Selects Result with #result
+const resultDisplay = document.querySelector('#result')
+//Creates array for cardsChosen
 let cardsChosen = []
+//Creates array for cardsChosenIds
 let cardsChosenIds = []
+//Var for cardsWon
 const cardsWon = []
 
 //Function to create the board
@@ -92,8 +97,17 @@ if (optionOneId == optionTwoId){
     cards[optionTwoId].removeEventListener ('click', flipCard)
     cardsWon.push(cardsChosen)
   }
+  else{
+    cards[optionOneId].setAttribute('src', 'images/blank.png')
+    cards[optionTwoId].setAttribute('src', 'images/blank.png')
+
+  }
   cardsChosen = []
   cardsChosenIds = []
+  resultDisplay.textContent = cardsWon.length
+  if (cardsWon.length === cardArray.length/2) {
+    resultDisplay.innerHTML = 'Congratulations you found them all'
+  }
 }
 
 function flipCard(){
@@ -109,4 +123,3 @@ function flipCard(){
   setTimeout( checkMatch, 500)
 }
 }
-
